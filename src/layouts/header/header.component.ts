@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
       <div class="collapse navbar-collapse" id="mainmenu">
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-               <a class="nav-link active" aria-current="page" href="#">Home</a>
+               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
                <a class="nav-link" href="#">Page</a>
@@ -23,8 +23,8 @@ import { Component } from '@angular/core';
                Signals
                </a>
                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Signals Concepts</a></li>
-                  <li><a class="dropdown-item" href="#">Linked Signals</a></li>
+                  <li><a class="dropdown-item" href="/signals">Signals Concepts</a></li>
+                  <li><a class="dropdown-item" href="/linked-signals">Linked Signals</a></li>
                   <li>
                      <hr class="dropdown-divider">
                   </li>
