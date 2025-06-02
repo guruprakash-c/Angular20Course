@@ -1,0 +1,11 @@
+<div align="center">
+    <h2>Signals</h2>
+    <div class="input-group">
+        <button class="btn btn-light" (click)="onIncrement()">[+]</button>
+        <input type="number" class="form-control" (change)="onChange($event)" [(ngModel)]="inputVal"/>
+        <button class="btn btn-light" (click)="onDecrement()">[-]</button>
+    </div>
+    <p>Counter value: {{ counter() }}</p> 
+    <hr/>
+    <app-linked-signals/>   
+</div>
