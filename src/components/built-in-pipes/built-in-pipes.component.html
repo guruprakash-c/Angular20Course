@@ -1,0 +1,69 @@
+<main class="container p-4">
+    <div class="card mt-2 mb-2">
+        <div class="card-header">
+            <h3>1. String type Pipes </h3>
+        </div>
+        <div class="card-body">
+            <p>{{textStr | lowercase}} &bull; {{textStr | uppercase}} &bull; {{textStr | titlecase}} </p>
+        </div>
+    </div>
+    <div class="card mt-2 mb-2">
+        <div class="card-header">
+            <h3>2. Slice Pipes {{ textStr.length }} </h3>
+        </div>
+        <div class="card-body">
+            <ol>
+                <li>Slice Pipes(2:8) : {{ textStr | slice : 2 : 5 }}</li>
+                <li>Slice Pipes(2) : {{ textStr | slice : 2 }}</li>
+                <li>Slice Pipes(2:-5) : {{ textStr | slice : 2:-5 }}</li>
+                <li>Slice Pipes(-5) : {{ textStr | slice : -5 }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="card mt-2 mb-2">
+        <div class="card-header">
+            <h3>3. JSON Pipe</h3>
+        </div>
+        <div class="card-body">
+            <ol>
+                <li>JSON Pipe : <pre><code>{{ jsonData | json }}</code></pre></li>
+            </ol>
+        </div>
+    </div>
+    <div class="card mt-2 mb-2">
+        <div class="card-header">
+            <h3>4. Number type Pipe</h3>
+        </div>
+        <div class="card-body">
+            <ol>
+                <li>Default : {{ todaysDate }}</li>
+                <li>Date : {{ todaysDate | date }}</li>
+                <li>Short : {{ todaysDate | date:'short' }}</li>
+                <li>Short Date : {{ todaysDate | date:'shortDate' }}</li>
+                <li>Short Time: {{ todaysDate | date:'shortTime' }}</li>
+                <li>Medium : {{ todaysDate | date:'medium' }}</li>
+                <li>Medium Date : {{ todaysDate | date:'mediumDate' }}</li>
+                <li>Medium Time: {{ todaysDate | date:'mediumTime' }}</li>
+                <li>Decimal : {{ floatVal | number:'1.3' }}</li>
+                <li>Percent : {{ .5 | percent }}</li>
+                <li>Currency : {{ 23 | currency }}</li>
+                <li>Currency : {{ 23 | currency : 'INR'}}</li>
+                <li>Decimal + Currency : {{ floatVal | number:'2.2' | currency : 'JPY' }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="card mt-2 mb-2">
+        <div class="card-header">
+            <h3>5. Async Pipe</h3>
+        </div>
+        <div class="card-body">
+            <ol>
+                @for(tech of techs | async; track tech){
+                <li>{{ tech }}</li>
+                }
+            </ol>
+        </div>
+    </div>
+</main>
+
+

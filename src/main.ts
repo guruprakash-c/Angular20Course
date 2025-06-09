@@ -5,16 +5,18 @@ import { SignalsComponent } from './components/signals/signals.component';
 import { HeaderComponent } from "./layouts/header/header.component";
 import { FooterComponent } from "./layouts/footer/footer.component";
 import { LoaderComponent } from "./layouts/loader/loader.component";
+import { BuiltInPipesComponent } from './components/built-in-pipes/built-in-pipes.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent, BuiltInPipesComponent],
   template: `
-    <app-header/>
+    <!--app-header/>
     <main>
     <app-loader/>
-    <router-outlet/>
     </main>  
-    <app-footer/>
+    <app-footer/-->
+    <app-built-in-pipes/>
+    <router-outlet/>
   `,
 })
 export class App {

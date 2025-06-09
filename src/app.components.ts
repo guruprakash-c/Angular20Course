@@ -9,12 +9,12 @@ import { LoaderComponent } from "./layouts/loader/loader.component";
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, FooterComponent, LoaderComponent],
   template: `
-  <app-header/>
+  <!-- <app-header/>
   <main>
     <app-loader/>
     <router-outlet/>
   </main>  
-  <app-footer/>
+  <app-footer/> -->
   `,
   styles: [],
 })
