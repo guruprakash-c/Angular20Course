@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { of } from 'rxjs';
+import { OobPipe } from '../../pipes/oob.pipe';
 
 @Component({
   selector: 'app-built-in-pipes',
-  imports: [CommonModule],
+  imports: [CommonModule, OobPipe],
   templateUrl: './built-in-pipes.component.html',
   styleUrl: './built-in-pipes.component.css'
 })
@@ -18,4 +19,6 @@ jsonData = [
 todaysDate:Date = new Date();
 floatVal:number = 3.814152892;
 techs = of(['C#','Java','PHP','R','Python']);
+
+indianMbl:any = undefined; //9876543210;
 }
