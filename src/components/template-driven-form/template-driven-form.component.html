@@ -1,0 +1,83 @@
+<main class="container p-4">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <!--pre>
+        value: {{userForm.value | json}} 
+        valid: {{userForm.valid}}
+        in valid: {{userForm.invalid}}
+        touched: {{userForm.touched}}
+        un-touched: {{userForm.untouched}}
+        sumitted:  {{userForm.submitted}}
+    </pre-->
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First name</label>
+        <input type="email" class="form-control" name="firstName" placeholder="Enter first name" #fname="ngModel" [(ngModel)]="userObj.firstName" required/>
+        @if(fname?.dirty || fname?.touched){
+          @if(fname?.errors?.['required']){
+            <small class="text-danger d-block">first name is required</small>
+          } 
+        }
+    </div>
+    <div class="mb-3">
+        <label for="lastName" class="form-label">Last name</label>
+        <input type="email" class="form-control" name="lastName" placeholder="Enter last name" #lname="ngModel" [(ngModel)]="userObj.lastName" required/>
+        @if(lname?.dirty || lname?.touched){
+          @if(lname?.errors?.['required']){
+            <small class="text-danger d-block">last name is required</small>
+          } 
+        }
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" name="email" placeholder="Enter email address" #eml="ngModel" [(ngModel)]="userObj.email" email required/>
+      @if(eml?.dirty || eml?.touched){
+        @if(eml?.errors?.['required']){
+          <small class="text-danger d-block">email address is required</small>
+        } 
+        @if(eml?.errors?.['email']){
+          <small class="text-danger d-block">enter a valid email address</small>
+        } 
+      }
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <div class="input-group">
+        <input type="password" class="form-control" name="password" placeholder="Enter password" #pwd="ngModel" [(ngModel)]="userObj.password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" minlength="8" maxlength="12" required/>
+        <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#rulesPnl">
+          <i class="bi bi-caret-down-fill align-middle"></i>
+        </button>
+      </div>
+      @if(pwd?.dirty || pwd?.touched){
+        @if(pwd?.errors?.['required']){
+          <small class="text-danger d-block">password is required</small>
+        } 
+        @if(pwd?.errors?.['minlength']){
+          <small class="text-danger d-block">minimum 8 characters</small>
+        }
+        @if(pwd?.errors?.['maxlength']){
+          <small class="text-danger d-block">maximum 12 characters</small>
+        }
+        @if(pwd?.errors?.['pattern']){
+          <small class="text-danger d-block">entered password is in invalid format</small>
+        } 
+      }
+      <div class="card bg-info-subtle mt-2 collapse" id="rulesPnl">
+        <header class="card-header">Your password must be :</header>
+        <main class="card-body">
+          <ul type="square">
+          @for(rule of rules; track rule){
+            <li>{{rule}}</li>
+          }
+        </ul>
+        </main>
+      </div>
+    </div>
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" name="staySignedIn" [(ngModel)]="userObj.staySignedIn"/>
+      <label class="form-check-label" for="staySignedIn">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button>
+    <button class="btn btn-warning" (click)="setValue(userForm)">Set Value</button>
+    <button class="btn btn-info" (click)="patchValue(userForm)">Patch Value</button>
+    <button class="btn btn-secondary" (click)="resetValue(userForm)">Reset Value</button>
+  </form>
+</main>

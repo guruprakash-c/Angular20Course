@@ -32,7 +32,7 @@
             "outputPath": "dist/demo",
             "polyfills": ["zone.js"],
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"],
-            "styles": ["src/global_styles.css","node_modules/bootstrap/dist/css/bootstrap.min.css","assets/theme.css"],
+            "styles": ["src/global_styles.css","node_modules/bootstrap/dist/css/bootstrap.min.css","assets/theme.css","node_modules/bootstrap-icons/font/bootstrap-icons.min.css"],
             "tsConfig": "tsconfig.app.json"
           }
         },
