@@ -1,0 +1,20 @@
+<main class="p-4">
+    @if(isEligibleforPremium){
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Hey {{userData.name | titlecase }}!</strong> You are eligible for <strong>Premium plan</strong>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    @else{
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Hey {{userData.name | titlecase }}!</strong> You are not eligible for <strong>Premium plan</strong>.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <ul>
+        <li>ID: {{userData.id}}</li>
+        <li>Name: {{userData.name}}</li>
+        <li>Username: {{userData.userName}}</li>
+        <li>e-Mail: {{userData.email}}</li>
+    </ul>
+</main>
