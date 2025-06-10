@@ -7,9 +7,10 @@ import { FooterComponent } from "./layouts/footer/footer.component";
 import { LoaderComponent } from "./layouts/loader/loader.component";
 import { BuiltInPipesComponent } from './components/built-in-pipes/built-in-pipes.component';
 import { TemplateDrivenFormComponent } from './components/template-driven-form/template-driven-form.component';
+import { ReactiveFormsComponent } from './components/reactive-forms/reactive-forms.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TemplateDrivenFormComponent],
+  imports: [RouterOutlet, ReactiveFormsComponent],
   template: `
     <!--app-header/>
     <main>
@@ -17,7 +18,7 @@ import { TemplateDrivenFormComponent } from './components/template-driven-form/t
     </main>  
     <app-footer/>
     <app-built-in-pipes/-->
-    <app-template-driven-form />
+    <app-reactive-forms />
     <router-outlet/>
   `,
 })

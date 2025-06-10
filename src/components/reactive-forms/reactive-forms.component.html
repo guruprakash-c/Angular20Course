@@ -1,0 +1,96 @@
+<main class="container p-4">
+    <h2>Reactive Form</h2>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">First name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="firstName"/>
+            @if(reactiveForm.controls['firstName']?.dirty || reactiveForm.controls['firstName']?.touched){
+                @if(reactiveForm.controls['firstName']?.errors?.['required']){
+                    <small class="text-danger d-block">First name is required</small>
+                } 
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="lastName"/>
+            @if(reactiveForm.controls['lastName']?.dirty || reactiveForm.controls['lastName']?.touched){
+                @if(reactiveForm.controls['lastName']?.errors?.['required']){
+                    <small class="text-danger d-block">Last name is required</small>
+                } 
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email"/>
+            @if(reactiveForm.controls['email']?.dirty || reactiveForm.controls['email']?.touched){
+                @if(reactiveForm.controls['email']?.errors?.['required']){
+                    <small class="text-danger d-block">Email address is required</small>
+                } 
+                @if(reactiveForm.controls['email']?.errors?.['email']){
+                    <small class="text-danger d-block">Enter a valid email address</small>
+                } 
+            }
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password"/>
+            @if(reactiveForm.controls['password']?.dirty || reactiveForm.controls['password']?.touched){
+                @if(reactiveForm.controls['password']?.errors?.['required']){
+                    <small class="text-danger d-block">password is required</small>
+                } 
+                @if(reactiveForm.controls['password']?.errors?.['minlength']){
+                    <small class="text-danger d-block">minimum 8 characters</small>
+                }
+                @if(reactiveForm.controls['password']?.errors?.['maxlength']){
+                    <small class="text-danger d-block">maximum 12 characters</small>
+                }
+                @if(reactiveForm.controls['password']?.errors?.['pattern']){
+                    <small class="text-danger d-block">entered password is in invalid format</small>
+                } 
+            }
+        </div>
+        <section class="card mb-3" formArrayName="skills">
+            <div class="card-header">
+                <button class="btn btn-success" (click)="addSkill()">Add Skill</button>
+            </div>
+            <div class="card-body" *ngFor="let skill of skills.controls; let i = index">
+                <section [formGroupName]="i" class="input-group">
+                    Skill #{{i}}: <input type="text" class="form-control" formControlName="skill"/>
+                    <button class="btn btn-danger" (click)="deleteSkill(i)">Delete</button> 
+                </section>
+            </div>
+        </section>
+        <section class="card mb-3" formGroupName="address">
+            <h3 class="card-header">Address </h3>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">City</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="city"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">State</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="state"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Country</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="country"/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">ZIP code</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" formControlName="zip"/>
+                </div>
+            </div>
+        </section>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="staySignedIn">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="reactiveForm.invalid">Submit</button>
+        <button class="btn btn-warning" (click)="setAllValues()">Set All Values</button>
+        <button class="btn btn-info" (click)="setPartialValues()">Patch Values</button>
+        <button class="btn btn-secondary" (click)="resetValues()">Reset Value</button>
+    </form>
+</main>
